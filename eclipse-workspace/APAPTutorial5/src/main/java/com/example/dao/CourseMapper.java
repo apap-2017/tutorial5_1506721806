@@ -22,7 +22,7 @@ public interface CourseMapper
     @Results(value = {
     		@Result(property="idCourse", column="id_course"),
     		@Result(property="name", column="name"),
-    		@Result(property="credits", column="credits"), @Result(property="Students", column="id_course", 
+    		@Result(property="credits", column="credits"), @Result(property="students", column="id_course", 
     		javaType = List.class, many=@Many(select="selectStudents"))
     })
     CourseModel selectCourse (@Param("id_course") String id_course);
