@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Tambah Keluarga</title>
+<div th:replace="fragments/fragment :: links"></div>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div th:replace="fragments/fragment :: header"></div>
+	<div th:if="${flag_tambah_keluarga==true}">
+    		<h2>Sukses !</h2>
+    		<p th:text="'Keluarga dengan NKK ' + ${nkk} + ' berhasil diubah'"></p>
+    	</div>
+	<h1 class="page-header">Tambah Keluarga</h1>
+
+	<form action="/keluarga/tambah" method="post">
+		<table>
+	       		<tr> 
+	       			<td>Alamat</td>
+	       			<td><input type="text" name="alamat" required = "true" /></td>
+	       		</tr>
+	       		<tr>
+	       			<td>RT</td>
+	       			<td><input type="text" name="rt" required = "true"/></td>
+	       		</tr>
+	       		<tr>
+	       			<td>RW</td>
+	       			<td><input type="text" name="rw" required = "true"/></td>
+	       		</tr>
+	       		<tr>
+	       			<td>Kelurahan/Desa</td>
+	       			<td>
+	       				<input type="text" name="nama_kelurahan" required = "true"/>
+					</td>
+	       		</tr>
+	       		<tr>
+	       			<td>Kecamatan</td>
+	       			<td><input type="text" name="nama_kecamatan" required = "true"/></td>
+	       		</tr>
+	       		<tr>
+	       			<td>Kota</td>
+	       			<td><input type="text" name="nama_kota" required = "true"/></td>
+	       		</tr>
+       		</table>
+		<div>
+			<button type="submit" name="action" value="save">Simpan</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
+

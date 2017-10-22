@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"></link>
+   <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css"></link>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css"/>
+      <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
+      <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="../DataTables/datatables.css"></link>
+   
+        
+        
+    </head>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<div th:if="${flag_mati==true}">
+    		<h2>Sukses !</h2>
+    		<p th:text="'Penduduk dengan NIK ' + ${nik} + ' berhasil dinonaktifkan'"></p>
+    	</div>
+    	<div class="col-sm-6 col-md-6">
+    	<h2 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}">NIK Penduduk</h2>
+       	 <table>
+       		<tr>
+       			<td>NIK</td>
+       			<td th:text="${penduduk.nik}">NIK Penduduk></td>
+       		</tr>
+       		<tr>
+       			<td>Nama</td>
+       			<td th:text="${penduduk.nama}">Nama Penduduk></td>
+       		</tr>
+       		<tr>
+       			<td>Tempat/Tanggal Lahir</td>
+       			<td th:text="${penduduk.tempat_lahir} + ', ' + ${tanggal_lahir}">Tempat/Tanggal Lahir Penduduk></td>
+       		</tr>
+       		<tr>
+       			<td>Alamat</td>
+       			<td th:text=" ${keluarga.alamat}">Alamat Penduduk></td>
+       		</tr>
+       		<tr>
+       			<td>RT/RW</td>
+       			<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}">RT/RW Penduduk ></td>
+       		</tr>
+       		<tr>
+       			<td>Kelurahan/Desa</td>
+       			<td th:text="${kelurahan.nama_kelurahan}">Kelurahan/Desa></td>
+       		</tr>
+       		<tr>
+       			<td>Kecamatan</td>
+       			<td th:text="${kecamatan.nama_kecamatan}">Kecamatan></td>
+       		</tr>
+       		<tr>
+       			<td>Kota</td>
+       			<td th:text="${kota.nama_kota}">Kota></td>
+       		</tr>
+       		<tr>
+       			<td>Golongan Darah</td>
+       			<td th:text="${penduduk.golongan_darah}">Golongan Darah></td>
+       		</tr>
+       		<tr>
+       			<td>Agama</td>
+       			<td th:text="${penduduk.agama}">Agama></td>
+       		</tr>
+       		<tr>
+       			<td>Status Perkawinan</td>
+       			<td th:text="${penduduk.status_perkawinan}">Status Perkawinan></td>
+       		</tr>
+       		<tr>
+       			<td>Pekerjaan</td>
+       			<td th:text="${penduduk.pekerjaan}">Pekerjaan></td>
+       		</tr>
+       		<tr>
+       			<td>Kewarganegaraan</td>
+       			<td th:text="${penduduk.is_wni} ==1 ? 'WNI' : 'WNA'"></td>
+       		</tr>
+       		<tr>
+       			<td>Status Kematian</td>
+       			<td th:text="${penduduk.is_wafat} ==1 ? 'Wafat' : 'Hidup'"></td>
+       		</tr>
+       	</table>
+       	<form method="post" th:action="'/penduduk?nik=' + ${penduduk.nik}">
+       		<input type="hidden" th:value="${penduduk.id_keluarga}" name="id_keluarga" />
+       		<button type="submit" class="btn btn-danger">nonaktifkan</button>
+       	</form>
+       	<form method="get" th:action="'/penduduk/ubah/' + ${penduduk.nik}">
+       		<button type="submit" class="btn btn-info">Ubah Data</button>
+       	</form>
+       	</div>
+    </body>
+</html>
+

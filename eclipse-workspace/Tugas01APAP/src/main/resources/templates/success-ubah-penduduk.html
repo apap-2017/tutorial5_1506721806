@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title>Ubah</title>
+		<div th:replace="fragments/fragment :: links"></div>
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		<h1>Sukses!</h1>
+		<h3 th:text="'Penduduk dengan NKK  ' + ${nkk} + ' berhasil diubah'"></h3>
+	</body>
+</html>

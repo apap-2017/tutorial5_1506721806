@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <div th:replace="fragments/fragment :: links"></div>
+        
+    </head>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+       	 
+        <table>
+        	<thead>
+       		<tr>
+       			<th>No</th>
+       			<th>Nama Lengkap</th>
+       			<th>NIK</th>
+       			<th>Jenis Kelamin</th>
+       			<th>Tempat Lahir</th>
+       			<th>Tanggal Lahir</th>
+       			<th>Agama</th>
+       			<th>Pekerjaan</th>
+       			<th>Status Perkawinan</th>
+       			<th>Status dalam Keluarga</th>
+       			<th>Kewarganegaraan</th>
+       		</tr>
+       		</thead>
+       		<tbody>
+       		<ul th:each="penduduk,iterationStatus: ${pendudukKelurahan}">
+       			<tr>
+       				<td th:text="${iterationStatus.count}"></td>
+		       		<td th:text="${penduduk.nama}">Nama Penduduk></td>
+       				<td th:text="${penduduk.nik}">NIK></td>
+       				<td th:text="${penduduk.jenis_kelamin}">Jenis Kelamin></td>
+       				<td th:text="${penduduk.tempat_lahir}">Tempat Lahir></td>
+       				<td th:text="${penduduk.tanggal_lahir}">Tanggal Lahir Penduduk></td>
+       				<td th:text="${penduduk.agama}">Agama></td>
+					<td th:text="${penduduk.pekerjaan}">Pekerjaan></td>
+					<td th:text="${penduduk.status_perkawinan}">Status Perkawinan></td>
+					<td th:text="${penduduk.status_dalam_keluarga}">Status dalam Keluarga></td>
+					<td th:text="${penduduk.is_wni} ==1 ? 'WNI' : 'WNA'"></td>       				
+       			</tr>	
+		      </ul>
+       		</tbody>
+        </table>        
+  
+    </body>
+</html>
+

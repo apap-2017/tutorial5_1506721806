@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Update student</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"></link>
+   <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"></link>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+      <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+      <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css"></link>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div th:if="${flag_ubah==true}">
+    		<h2>Sukses !</h2>
+    		<p th:text="'Penduduk dengan NIK ' + ${nik} + ' berhasil diubah'"></p>
+    	</div>
+	<h1 class="page-header">Update Penduduk</h1>
+	
+	
+	<form th:object="${penduduk}" th:action="'/penduduk/ubah/' + ${penduduk.nik}" method="post">
+		<table>
+       		<tr> 
+       			<td>Masukkan Nama</td>
+       			<td><input type="text" name="nama" th:value="${penduduk.nama}" th:field="*{nama}" /></td>
+       		</tr>
+       		<tr>
+       			<td>Tempat Lahir</td>
+       			<td><input type="text" name="tempat_lahir" th:value="${penduduk.tempat_lahir}" th:field="*{tempat_lahir}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Tanggal Lahir</td>
+       			<td><input type="text" name="tanggal_lahir" th:value="${penduduk.tanggal_lahir}" th:field="*{tanggal_lahir}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Jenis Kelamin</td>
+       			<td>
+       				<select name="jenis_kelamin" th:value="${penduduk.jenis_kelamin}" th:field="*{jenis_kelamin}">
+						<option value="1">Wanita</option>
+						<option value="0">Pria</option>
+					</select>
+				</td>
+       		</tr>
+       		<tr>
+       			<td>Golongan Darah</td>
+       			<td><input type="text" name="golongan_darah" th:value="${penduduk.golongan_darah}" th:field="*{golongan_darah}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Agama</td>
+       			<td><input type="text" name="agama" th:value="${penduduk.agama}" th:field="*{agama}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Status Perkawinan</td>
+       			<td><input type="text" name="status_perkawinan" th:value="${penduduk.status_perkawinan}" th:field="*{status_perkawinan}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Status dalam Keluarga</td>
+       			<td><input type="text" name="status_dalam_keluarga" th:value="${penduduk.status_dalam_keluarga}" th:field="*{status_dalam_keluarga}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Pekerjaan</td>
+       			<td><input type="text" name="pekerjaan" th:value="${penduduk.pekerjaan}" th:field="*{pekerjaan}"/></td>
+       		</tr>
+       		<tr>
+       			<td>Kewarganegaraan</td>
+       			<td>
+       				<select name="is_wni" th:value="${penduduk.is_wni}" th:field="*{is_wni}">
+						<option value="1">WNI</option>
+						<option value="0">WNA</option>
+					</select>
+				</td>
+       		</tr>
+       		<tr>
+       			<td>Status Kematian</td>
+       			<td>
+		       		<select name="is_wafat" th:value="${penduduk.is_wafat}" th:field="*{is_wafat}">
+						<option value="1">Wafat</option>
+						<option value="0">Hidup</option>
+					</select>
+				</td>
+       		</tr>
+       		<tr>
+       			<td>ID Keluarga</td>
+       			<td><input type="text" name="id_keluarga" th:value="${penduduk.id_keluarga}" th:field="*{id_keluarga}"/></td>
+       		</tr>
+       		
+		</table>
+		<div>
+			<input type="hidden" name="id" th:value="${penduduk.id}" th:field="*{id}" />
+		</div>
+		<div>
+			<button type="submit" name="action" value="update">Update</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
+

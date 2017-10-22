@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Update student</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"></link>
+   <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"></link>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+      <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+      <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css"></link>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<h1 class="page-header">Ubah Keluarga</h1>
+	<div th:if="${flag_ubah_keluarga==true}">
+    		<h2>Sukses !</h2>
+    		<p th:text="'Penduduk dengan NKK ' + ${nomor_kk} + ' berhasil diubah'"></p>
+    	</div>
+	
+	<form th:object="${keluarga}" th:action="'/keluarga/ubah/' + ${keluarga.nomor_kk}" method="post">
+		<input type="hidden" name="nomor_kk" th:value="${keluarga.nomor_kk}" th:field="*{nomor_kk}" />
+		<input type="hidden" name="id" th:value="${keluarga.id}" th:field="*{id}" />
+		<table>
+	       		<tr> 
+	       			<td>Alamat</td>
+	       			<td><input type="text" name="alamat" th:value="${keluarga.alamat}" th:field="*{alamat}" /></td>
+	       		</tr>
+	       		<tr>
+	       			<td>RT</td>
+	       			<td><input type="text" name="rt" th:value="${keluarga.rt}" th:field="*{rt}"/></td>
+	       		</tr>
+	       		<tr>
+	       			<td>RW</td>
+	       			<td><input type="text" name="rw" th:value="${keluarga.rw}" th:field="*{rw}"/></td>
+	       		</tr>
+	       		<tr>
+	       			<td>Kelurahan/Desa</td>
+	       			<td>
+	       				<input type="text" name="nama_kelurahan" th:value="${kelurahan.nama_kelurahan}"/>
+					</td>
+	       		</tr>
+	       		<tr>
+	       			<td>Kecamatan</td>
+	       			<td><input type="text" name="nama_kecamatan" th:value="${kecamatan.nama_kecamatan}"/></td>
+	       		</tr>
+	       		<tr>
+	       			<td>Kota</td>
+	       			<td><input type="text" name="nama_kota" th:value="${kota.nama_kota}" /></td>
+	       		</tr>
+       		</table>
+		
+		<div>
+			<button type="submit" name="action" value="update">Update</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
+

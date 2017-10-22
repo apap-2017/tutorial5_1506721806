@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <div th:replace="fragments/fragment :: links"></div>
+        
+    </head>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<h2><h3 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}">NKK Keluarga</h3> </h2>
+       	 <table>
+       		<tr>
+       			<td>NKK</td>
+       			<td th:text="${nomor_kk}">NKK Keluarga></td>
+       		</tr>
+       		<tr>
+       			<td>Alamat</td>
+       			<td th:text=" ${keluarga.alamat}">Alamat></td>
+       		</tr>
+       		<tr>
+       			<td>RT/RW</td>
+       			<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}">RT/RW Penduduk></td>
+       		</tr>
+       		<tr>
+       			<td>Kelurahan/Desa</td>
+       			<td th:text="${kelurahan.nama_kelurahan}">Kelurahan/Desa></td>
+       		</tr>
+       		<tr>
+       			<td>Kecamatan</td>
+       			<td th:text="${kecamatan.nama_kecamatan}">Kecamatan></td>
+       		</tr>
+       		<tr>
+       			<td>Kota</td>
+       			<td th:text="${kota.nama_kota}">Kota></td>
+       		</tr>
+        </table>
+        
+        <hr></hr>
+        
+        <table>
+       		<tr>
+       			<th>No</th>
+       			<th>Nama Lengkap</th>
+       			<th>NKK</th>
+       			<th>Jenis Kelamin</th>
+       			<th>Tempat Lahir</th>
+       			<th>Tanggal Lahir</th>
+       			<th>Agama</th>
+       			<th>Pekerjaan</th>
+       			<th>Status Perkawinan</th>
+       			<th>Status dalam Keluarga</th>
+       			<th>Kewarganegaraan</th>
+       		</tr>
+       		
+       		<ul th:each="penduduk,iterationStatus: ${keluarga.listKeluarga}">
+       			<tr>
+       				<td th:text="${iterationStatus.count}"></td>
+		       		<td th:text="${penduduk.nama}">Nama Penduduk></td>
+       				<td th:text="${keluarga.nomor_kk}">NKK Keluarga></td>
+       				<td th:text="${penduduk.jenis_kelamin}">Jenis Kelamin></td>
+       				<td th:text="${penduduk.tempat_lahir}">Tempat Lahir></td>
+       				<td th:text="${penduduk.tanggal_lahir}">Tanggal Lahir Penduduk></td>
+       				<td th:text="${penduduk.agama}">Agama></td>
+					<td th:text="${penduduk.pekerjaan}">Pekerjaan></td>
+					<td th:text="${penduduk.status_perkawinan}">Status Perkawinan></td>
+					<td th:text="${penduduk.status_dalam_keluarga}">Status dalam Keluarga></td>
+					<td th:text="${penduduk.is_wni} ==1 ? 'WNI' : 'WNA'"></td>       				
+       			</tr>	
+		      </ul>
+       		
+        </table>        
+       	<form method="get" th:action="'/keluarga/ubah/' + ${keluarga.nomor_kk}">
+       		<button type="submit">Ubah Keluarga</button>
+       	</form>
+  
+    </body>
+</html>
+

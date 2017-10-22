@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Tambah Penduduk</title>
+<div th:replace="fragments/fragment :: links"></div>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div th:if="${flag_tambah==true}">
+    		<h2>Sukses !</h2>
+    		<p th:text="'Penduduk dengan NIK ' + ${nik} + ' berhasil ditambahkan'"></p>
+    	</div>
+		<h1 class="page-header">Tambah Penduduk</h1>
+
+	<form action="/penduduk/tambah" method="post">
+		<table>
+       		<tr> 
+       			<td>Masukkan Nama</td>
+       			<td><input type="text" name="nama" /></td>
+       		</tr>
+       		<tr>
+       			<td>Tempat Lahir</td>
+       			<td><input type="text" name="tempat_lahir" /></td>
+       		</tr>
+       		<tr>
+       			<td>Tanggal Lahir</td>
+       			<td><input type="text" name="tanggal_lahir" /></td>
+       		</tr>
+       		<tr>
+       			<td>Jenis Kelamin</td>
+       			<td>
+       				<select name="jenis_kelamin">
+						<option value="1" selected="selected">Wanita</option>
+						<option value="0">Pria</option>
+					</select>
+			</td>
+       		</tr>
+       		<tr>
+       			<td>Golongan Darah</td>
+       			<td><input type="text" name="golongan_darah" /></td>
+       		</tr>
+       		<tr>
+       			<td>Agama</td>
+       			<td><input type="text" name="agama" /></td>
+       		</tr>
+       		<tr>
+       			<td>Status Perkawinan</td>
+       			<td><input type="text" name="status_perkawinan" /></td>
+       		</tr>
+       		<tr>
+       			<td>Status dalam Keluarga</td>
+       			<td><input type="text" name="status_dalam_keluarga" /></td>
+       		</tr>
+       		<tr>
+       			<td>Pekerjaan</td>
+       			<td><input type="text" name="pekerjaan" /></td>
+       		</tr>
+       		<tr>
+       			<td>Kewarganegaraan</td>
+       			<td>
+       				<select name="is_wni">
+						<option value="1" selected="selected">WNI</option>
+						<option value="0">WNA</option>
+					</select>
+				</td>
+       		</tr>
+       		<tr>
+       			<td>Status Kematian</td>
+       			<td>
+		       			<select name="is_wafat">
+							<option value="1" selected="selected">Wafat</option>
+							<option value="0">Hidup</option>
+						</select>
+				</td>
+       		</tr>
+       		<tr>
+       			<td>ID Keluarga</td>
+       			<td><input type="text" name="id_keluarga" /></td>
+       		</tr>
+       		
+		</table>
+		<div>
+			<button type="submit" name="action" value="save">Simpan</button>
+		</div>
+	</form>
+	
+</body>
+
+</html>
+
